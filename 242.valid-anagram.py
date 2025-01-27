@@ -7,22 +7,16 @@
 # @lc code=start
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        sDict={}
-        tDict={}
-        if len(s) != len(s):
-            return False
-        for char in s:
-            if char in sDict:
-                sDict[char]+=1
-            else:
-                sDict[char]=1
-        for char in t:
-            if char in tDict:
-                tDict[char]+=1
-            else:
-                tDict[char]=1
+        s_count = {}
+        t_count = {}
 
-        return sDict == tDict
+        if len(t) != len(s):
+            return False
+
+        for i in range(0, len(s)):
+            s_count[s[i]] = 1 + s_count.get(s[i], 0)
+            t_count[t[i]] = 1 + t_count.get(t[i], 0)
+        return s_count == t_count
 
 # @lc code=end
 
